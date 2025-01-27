@@ -6,12 +6,13 @@ load_dotenv()
 import os
 
 password = os.getenv('FREEBTC')
-email = ''
+email = 'your email'
+website = 'http://getfreebtc.lol'
 
 async def main():
     while True:  # This will create an infinite loop
         agent = Agent(
-            task=f"Go to  getfreebtc.lol  ('https:// getfreebtc.lol'),close those pop up windows and log in with this (your-email) and use the Password from {password} , once you logged in click on the 'ROLL' button, once this was succesfull, close the browser window",
+            task=f"Go to ({website} and log in with this {email} and use the Password from {password},close those pop up windows, by clicking on 'no thanks' , once you logged in click on the  'verify human' button and than click 'ROLL withut verification' button, once this was succesfull, close the browser window",
             llm=ChatOpenAI(model="gpt-4o"),
         )
         result = await agent.run()
